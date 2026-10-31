@@ -1,0 +1,247 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-sans, sans-serif); }
+
+  /* HEADER */
+  .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 48px; background: #fff; border-bottom: 1px solid #f0f0f0; }
+  .logo { width: 28px; height: 18px; background: #111; border-radius: 2px; }
+  .header-center { font-size: 12px; color: #888; }
+  .btn-outline { font-size: 12px; font-weight: 500; padding: 8px 14px; border: 1.5px solid #111; border-radius: 6px; color: #111; }
+
+  /* HERO */
+  .hero { position: relative; background: #111; min-height: 560px; display: flex; align-items: flex-end; }
+  .hero-img { position: absolute; inset: 0; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: #333; font-size: 13px; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.2) 60%, transparent 100%); }
+  .hero-content { position: relative; padding: 48px; width: 100%; display: flex; align-items: flex-end; justify-content: space-between; gap: 48px; }
+  .hero-left { display: flex; flex-direction: column; gap: 12px; }
+  .hero-category { font-size: 11px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); }
+  .hero-title { font-size: 64px; font-weight: 700; color: #fff; line-height: 1.05; letter-spacing: -.02em; }
+  .hero-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+  .hero-tag { font-size: 11px; color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.2); padding: 3px 10px; border-radius: 999px; }
+  .hero-badge { font-size: 10px; font-weight: 500; background: #fff; color: #111; padding: 4px 12px; border-radius: 999px; letter-spacing: .06em; text-transform: uppercase; align-self: flex-start; }
+
+  /* OVERVIEW */
+  .overview { padding: 80px 48px; background: #fff; display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .sec-label { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .sec-title { font-size: 48px; font-weight: 700; color: #111; line-height: 1.1; letter-spacing: -.02em; }
+  .sec-title-light { font-size: 48px; font-weight: 700; color: #fff; line-height: 1.1; letter-spacing: -.02em; }
+  .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; padding-bottom: 24px; border-bottom: 1px solid #e8e8e8; }
+  .meta-label { font-size: 11px; font-weight: 500; color: #bbb; text-transform: uppercase; letter-spacing: .06em; }
+  .meta-value { font-size: 15px; font-weight: 500; color: #111; }
+  .overview-desc { font-size: 15px; color: #555; line-height: 1.75; grid-column: 1 / -1; }
+  .overview-desc strong { color: #111; font-weight: 600; }
+
+  /* DESAFIO */
+  .challenge { padding: 80px 48px; background: #F5F4F0; display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .body-text { font-size: 15px; color: #555; line-height: 1.75; }
+  .body-text strong { color: #111; font-weight: 600; }
+
+  /* SOLUÇÃO */
+  .solution { padding: 80px 48px; background: #fff; display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .steps { display: flex; flex-direction: column; }
+  .step { display: grid; grid-template-columns: 32px 1fr; gap: 20px; padding: 24px 0; border-top: 1px solid #e8e8e8; }
+  .step:last-child { border-bottom: 1px solid #e8e8e8; }
+  .step-num { font-size: 12px; color: #ccc; padding-top: 3px; }
+  .step-title { font-size: 16px; font-weight: 500; color: #111; margin-bottom: 6px; }
+  .step-desc { font-size: 13px; color: #888; line-height: 1.7; }
+
+  /* GALERIA */
+  .gallery { padding: 80px 48px; background: #fff; display: flex; flex-direction: column; gap: 16px; }
+  .gallery-main { background: #1a1a1a; border-radius: 12px; aspect-ratio: 16/7; display: flex; align-items: center; justify-content: center; color: #333; font-size: 13px; }
+  .gallery-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .gallery-thumb { background: #1a1a1a; border-radius: 12px; aspect-ratio: 4/3; display: flex; align-items: center; justify-content: center; color: #333; font-size: 12px; }
+
+  /* RESULTADOS */
+  .results { padding: 80px 48px; background: #020202; display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: start; }
+  .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; overflow: hidden; }
+  .result-card { background: #020202; padding: 32px 28px; }
+  .result-num { font-size: 48px; font-weight: 700; color: #fff; letter-spacing: -.02em; line-height: 1; margin-bottom: 8px; }
+  .result-label { font-size: 13px; color: rgba(255,255,255,.45); line-height: 1.5; }
+
+  /* DEPOIMENTO */
+  .testimonial { padding: 80px 48px; background: #F5F4F0; display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; align-items: center; }
+  .quote-text { font-size: 20px; color: #111; line-height: 1.6; font-weight: 400; margin-bottom: 32px; }
+  .quote-author { display: flex; align-items: center; gap: 14px; }
+  .quote-avatar { width: 40px; height: 40px; border-radius: 50%; background: #ddd; flex-shrink: 0; }
+  .quote-name { font-size: 14px; font-weight: 500; color: #111; }
+  .quote-role { font-size: 12px; color: #888; }
+
+  /* PRÓXIMO CASE */
+  .next-case { padding: 80px 48px; background: #fff; display: flex; align-items: center; justify-content: space-between; gap: 48px; }
+  .next-label { font-size: 12px; color: #888; margin-bottom: 8px; }
+  .next-title { font-size: 32px; font-weight: 700; color: #111; letter-spacing: -.02em; }
+  .next-card { position: relative; border-radius: 12px; overflow: hidden; background: #111; width: 320px; flex-shrink: 0; cursor: pointer; }
+  .next-card-img { aspect-ratio: 16/9; background: #1a1a1a; display: flex; align-items: center; justify-content: center; color: #333; font-size: 12px; }
+  .next-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.85) 0%, transparent 60%); }
+  .next-card-body { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 20px; display: flex; align-items: flex-end; justify-content: space-between; }
+  .next-card-cat { font-size: 9px; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.5); margin-bottom: 4px; }
+  .next-card-name { font-size: 15px; font-weight: 500; color: #fff; }
+  .next-btn { width: 36px; height: 36px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #111; flex-shrink: 0; }
+
+  /* CTA */
+  .cta { padding: 100px 48px; background: #020202; text-align: center; }
+  .cta-title { font-size: 48px; font-weight: 700; color: #fff; line-height: 1.2; margin-bottom: 32px; letter-spacing: -.02em; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .cta-btn { display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 500; color: #111; background: #fff; padding: 14px 28px; border-radius: 8px; }
+
+  /* FOOTER */
+  .footer { padding: 48px 48px 32px; background: #020202; border-top: 1px solid rgba(255,255,255,.06); }
+  .footer-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+  .f-logo { width: 28px; height: 18px; background: #fff; border-radius: 2px; opacity: .9; }
+  .f-tagline { font-size: 13px; color: #666; }
+  .footer-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 40px; }
+  .col-label { font-size: 10px; font-weight: 500; color: #444; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 14px; }
+  .col-link { display: block; font-size: 14px; color: #888; margin-bottom: 10px; }
+  .footer-bottom { display: flex; justify-content: space-between; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.06); }
+  .f-copy { font-size: 11px; color: #333; }
+  .f-legal { display: flex; gap: 20px; }
+  .f-legal span { font-size: 11px; color: #333; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: #5DCAA5; margin-top: 8px; }
+  .pill-dot { width: 6px; height: 6px; border-radius: 50%; background: #1D9E75; }
+</style>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="logo"></div>
+  <div class="header-center">Full Stack Developer & UX/UI Designer · São Paulo, Brasil</div>
+  <div class="btn-outline">Solicitar Consultoria ↗</div>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-img">imagem do case</div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <span class="hero-category">Branding</span>
+      <div class="hero-title">Lorenta Studio</div>
+      <div class="hero-tags">
+        <span class="hero-tag">Brand Identity</span>
+        <span class="hero-tag">Design System</span>
+        <span class="hero-tag">Figma</span>
+      </div>
+    </div>
+    <span class="hero-badge">Novo Case</span>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="overview">
+  <div>
+    <div class="sec-label">Overview</div>
+    <div class="sec-title">O projeto.</div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:32px;">
+    <div class="meta-grid">
+      <div class="meta-item"><span class="meta-label">Cliente</span><span class="meta-value">Lorenta Studio</span></div>
+      <div class="meta-item"><span class="meta-label">Ano</span><span class="meta-value">2025</span></div>
+      <div class="meta-item"><span class="meta-label">Escopo</span><span class="meta-value">Branding · Design System</span></div>
+      <div class="meta-item"><span class="meta-label">Papel</span><span class="meta-value">Lead Designer</span></div>
+    </div>
+    <div class="body-text">Visão geral do projeto — contexto do cliente, qual era o momento do negócio e por que o projeto foi iniciado. <strong>Qual era o objetivo principal</strong> e o que foi entregue ao final do processo.</div>
+  </div>
+</div>
+
+<!-- DESAFIO -->
+<div class="challenge">
+  <div>
+    <div class="sec-label">Desafio</div>
+    <div class="sec-title">O problema real.</div>
+  </div>
+  <div class="body-text">Descrição do desafio enfrentado pelo cliente antes do projeto. <strong>Qual era a dor central</strong> que motivou a contratação. Contexto de mercado, limitações técnicas ou estratégicas que precisavam ser superadas para que o negócio pudesse crescer.</div>
+</div>
+
+<!-- SOLUÇÃO -->
+<div class="solution">
+  <div>
+    <div class="sec-label">Solução</div>
+    <div class="sec-title">Como foi resolvido.</div>
+  </div>
+  <div class="steps">
+    <div class="step">
+      <span class="step-num">01.</span>
+      <div><div class="step-title">Discovery & Estratégia</div><div class="step-desc">Entendimento profundo do modelo de negócio, posicionamento de marca e definição da arquitetura de identidade visual.</div></div>
+    </div>
+    <div class="step">
+      <span class="step-num">02.</span>
+      <div><div class="step-title">Design & Prototipagem</div><div class="step-desc">Criação do sistema visual completo — logo, tipografia, paleta, iconografia e aplicações em Figma.</div></div>
+    </div>
+    <div class="step">
+      <span class="step-num">03.</span>
+      <div><div class="step-title">Entrega & Documentação</div><div class="step-desc">Brand guidelines completo e Design System documentado para uso autônomo pela equipe do cliente.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- GALERIA -->
+<div class="gallery">
+  <div class="gallery-main">imagem principal</div>
+  <div class="gallery-grid">
+    <div class="gallery-thumb">detalhe 01</div>
+    <div class="gallery-thumb">detalhe 02</div>
+    <div class="gallery-thumb">detalhe 03</div>
+  </div>
+</div>
+
+<!-- RESULTADOS -->
+<div class="results">
+  <div>
+    <div class="sec-label" style="color:rgba(255,255,255,.35)">Resultados</div>
+    <div class="sec-title-light">O impacto gerado.</div>
+  </div>
+  <div class="results-grid">
+    <div class="result-card"><div class="result-num">+60%</div><div class="result-label">Aumento no reconhecimento de marca em 3 meses</div></div>
+    <div class="result-card"><div class="result-num">2x</div><div class="result-label">Crescimento na taxa de conversão após o rebranding</div></div>
+    <div class="result-card"><div class="result-num">100%</div><div class="result-label">Adoção do Design System pela equipe interna</div></div>
+    <div class="result-card"><div class="result-num">4.9</div><div class="result-label">Avaliação do cliente ao final do projeto</div></div>
+  </div>
+</div>
+
+<!-- DEPOIMENTO -->
+<div class="testimonial">
+  <div>
+    <div class="sec-label">Depoimento</div>
+    <div class="sec-title">O que o cliente disse.</div>
+  </div>
+  <div>
+    <div class="quote-text">"O William tem a rara habilidade de entender o negócio e traduzi-lo em código performático. Ele não apenas entregou o sistema, mas melhorou nossa estratégia de conversão."</div>
+    <div class="quote-author">
+      <div class="quote-avatar"></div>
+      <div><div class="quote-name">Diretor de Operações</div><div class="quote-role">E-commerce de Varejo</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- PRÓXIMO CASE -->
+<div class="next-case">
+  <div>
+    <div class="next-label">Próximo projeto</div>
+    <div class="next-title">Continue explorando.</div>
+  </div>
+  <div class="next-card">
+    <div class="next-card-img">imagem</div>
+    <div class="next-card-overlay"></div>
+    <div class="next-card-body">
+      <div><div class="next-card-cat">Product Design</div><div class="next-card-name">Nome do Próximo Case</div></div>
+      <div class="next-btn">↗</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="cta-title">O próximo grande produto começa com uma conversa.</div>
+  <div class="cta-btn">Solicitar Consultoria ↗</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-brand"><div class="f-logo"></div><div class="f-tagline">Design Rigoroso. Engenharia Robusta.</div></div>
+  <div class="footer-cols">
+    <div><div class="col-label">Site</div><span class="col-link">Sobre</span><span class="col-link">Cases</span><span class="col-link">Serviços</span></div>
+    <div><div class="col-label">Follow</div><span class="col-link">LinkedIn</span><span class="col-link">Instagram</span><span class="col-link">GitHub</span></div>
+    <div><div class="col-label">Say Hello</div><span class="col-link">oi@williambueno.com.br</span><span class="col-link">São Paulo, Brasil</span><span class="col-link">WhatsApp ↗</span><div class="pill"><span class="pill-dot"></span> Disponível agora · 14:32 GMT-3</div></div>
+  </div>
+  <div class="footer-bottom"><div class="f-copy">© 2026 William Bueno. Todos os direitos reservados</div><div class="f-legal"><span>Política de Privacidade</span><span>Termos de Uso</span></div></div>
+</div>
