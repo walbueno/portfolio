@@ -1,0 +1,126 @@
+:root {
+    --font-family-base: "Geist", sans-serif;
+    --font-family-heading: "Manrope", sans-serif;
+    --ff-heading: "Manrope", sans-serif;
+    --container-max-width: 156rem;
+    --body-bg: #f4f4f4;
+    --color-black: #0a0a0a;
+    --color-gray-900: #1a1a1a;
+    --color-gray-700: #353535;
+    --color-gray-600: #5a5a5a;
+    --color-gray-muted: #b0b0b0;
+    --color-gray-200: #e5e5e5;
+    --color-gray-100: #f5f5f5;
+    --color-white: #ffffff;
+    --color-body: #f4f4f4;
+    --color-surface: #ffffff;
+    --color-surface-dark: #0a0a0a;
+    --online: #00ff41;
+    --offline: #dc3545;
+    --loading: #6c757d;
+    --btn-ghost: #e5e5e5;
+    --btn-ghost-hover: #dadada;
+}
+[data-reveal] {
+    opacity: 0;
+    transition-property: opacity, transform, filter;
+    transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-duration: 0.5s;
+    will-change: opacity, transform;
+}
+[data-reveal="up"] {
+    transform: translateY(24px);
+}
+[data-reveal="down"] {
+    transform: translateY(-24px);
+}
+[data-reveal="left"] {
+    transform: translateX(-24px);
+}
+[data-reveal="right"] {
+    transform: translateX(24px);
+}
+[data-reveal="scale"] {
+    transform: scale(0.96);
+}
+[data-reveal="blur"] {
+    transform: translateY(12px);
+    filter: blur(4px);
+}
+[data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+[data-delay="1"] {
+    transition-delay: 0.1s;
+}
+[data-delay="2"] {
+    transition-delay: 0.2s;
+}
+[data-delay="3"] {
+    transition-delay: 0.3s;
+}
+[data-delay="4"] {
+    transition-delay: 0.4s;
+}
+[data-delay="5"] {
+    transition-delay: 0.5s;
+}
+[data-delay="6"] {
+    transition-delay: 0.6s;
+}
+[data-duration="fast"] {
+    transition-duration: 0.35s;
+}
+[data-duration="slow"] {
+    transition-duration: 0.65s;
+}
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-style: normal;
+    text-align: left;
+    text-decoration: none;
+    box-sizing: border-box;
+    border: none;
+    -webkit-font-smoothing: antialiased;
+}
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+body {
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    font-family: var(--font-family-base);
+    background-color: var(--body-bg);
+    color: var(--color-black);
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.list__item {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1.2rem;
+}
+.list__text {
+    color: var(--color-gray-600);
+}
+.list__icon {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.2rem;
+    border-radius: 50%;
+    background-color: var(--color-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

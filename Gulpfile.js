@@ -15,21 +15,15 @@ const sass = gulpSass(dartSass);
 const paths = {
 
     scss: {
-        src: 'src/scss/theme.scss',
-        watch: 'src/scss/**/*.scss',
+        src: 'assets/css/scss/theme.scss',
+        watch: 'assets/css/scss/**/*.scss',
         dest: 'assets/css'
     },
 
     js: {
-        src: 'src/js/modules/**/*.js',
-        watch: 'src/js/modules/**/*.js',
+        src: 'assets/js/modules/**/*.js',
+        watch: 'assets/js/modules/**/*.js',
         dest: 'assets/js'
-    },
-
-    img: {
-        src: 'src/img/**/*',
-        watch: 'src/img/**/*',
-        dest: 'assets/img'
     }
 
 };
@@ -87,18 +81,6 @@ export function scripts() {
 }
 
 // ======================
-// Imagens
-// ======================
-
-export function images() {
-
-    return gulp
-        .src(paths.img.src)
-        .pipe(gulp.dest(paths.img.dest));
-
-}
-
-// ======================
 // BrowserSync
 // ======================
 
@@ -120,7 +102,6 @@ export function serve() {
 
     gulp.watch(paths.scss.watch, styles);
     gulp.watch(paths.js.watch, scripts);
-    gulp.watch(paths.img.watch, images);
     gulp.watch('./*.html').on('change', browserSync.reload);
 
 }
@@ -131,8 +112,7 @@ export function serve() {
 
 export const build = gulp.series(
     styles,
-    scripts,
-    images
+    scripts
 );
 
 export default gulp.series(

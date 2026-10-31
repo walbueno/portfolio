@@ -1,0 +1,17 @@
+.tags {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1.6rem;
+}
+.tags span {
+    display: inline-block;
+    padding: 0.8rem 1.6rem;
+    font-weight: 500;
+    font-size: 1.2rem;
+    line-height: 2.4rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border-radius: 0.8rem;
+    border: 0.1rem solid var(--color-gray-200);
+    background-color: var(--btn-ghost);
+}
