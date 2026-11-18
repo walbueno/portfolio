@@ -65,7 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
             [".resume__title", { reveal: "up", delay: "2", duration: "slow" }],
             [".resume__content p", { reveal: "up", delay: "3" }],
             [".resume__tags", { reveal: "up", delay: "4" }],
-            [".resume__content .btn", { reveal: "up", delay: "5", duration: "fast" }],
+            [".resume__btn", { reveal: "up", delay: "5", duration: "fast" }],
             [".cases__overline", { reveal: "up", delay: "1" }],
             [".cases__title", { reveal: "up", delay: "2" }],
             [".cases__header .btn", { reveal: "up", delay: "3", duration: "fast" }],
@@ -181,12 +181,13 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".testimonials__swiper") &&
         new Swiper(".testimonials__swiper", {
             loop: !0,
-            speed: 800,
+            speed: l ? 0 : 800,
             grabCursor: !0,
             slidesPerView: 1,
             spaceBetween: 20,
             breakpoints: { 1200: { slidesPerView: 3, spaceBetween: 32 } },
             pagination: { el: ".testimonials__pagination", clickable: !1 },
+            watchSlidesProgress: !0,
             observer: !0,
             observeParents: !0,
         });
